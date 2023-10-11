@@ -1,0 +1,6 @@
+.main_div {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+    background-color: rgb(210, 249, 249);
+}

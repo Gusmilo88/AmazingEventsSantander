@@ -1,0 +1,14 @@
+footer {
+    background: linear-gradient(to left, #000000, #333333, #444444);
+    padding: 25px;
+}
+
+.footer_nav_div {
+    display: flex;
+}
+
+.footer_nav_div__redes img{
+    width: 20vh;
+    padding: 10px;
+    margin-left: 15px;
+}
