@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       colors: {
         "azulLogo": "#01acfc",
+        "gradienteAzul": "linear-gradient(90deg, #01acfc, #00ffcc)",
       }
     },
   },
