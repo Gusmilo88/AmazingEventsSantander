@@ -1,0 +1,7 @@
+.container a:hover {
+    background: var(--gradientePrincipal);
+}
+
+div.w-full:hover {
+    background: var(--gradientePrincipal);
+  }
