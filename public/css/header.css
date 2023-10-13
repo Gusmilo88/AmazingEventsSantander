@@ -1,29 +1,4 @@
-header {
-    background: linear-gradient(to left, #000000, #333333, #444444);
-}
-
-.header_nav_div {
-    display: flex; 
-    justify-content: flex-end;
-}
-
-.header_nav_div__home, .header_nav_div__upcomingEvents, .header_nav_div__pastEvents, .header_nav_div__contact, .header_nav_div__stats{
-    border-radius: 8px;
-    padding: 8px;
-    margin: 10px;
-    color: white;
-}
-
-i {
-    margin: 3px;
-}
-
-a {
-    text-decoration: none;
-    color: white;
-}
-
-a:hover {
-    color: #95d0f7;
+a.text-white:hover {
+    background: var(--gradientePrincipal);
 }
 

@@ -1,4 +1,4 @@
-/* @import "./contact.css";
+@import "./contact.css";
 @import "./details.css";
 @import "./footer.css";
 @import "./general.css";
@@ -6,4 +6,5 @@
 @import "./home.css";
 @import "./pastEvents.css";
 @import "./stats.css";
-@import "./upcomingEvents.css"; */
+@import "./upcomingEvents.css";
+@import "./variables.css";
