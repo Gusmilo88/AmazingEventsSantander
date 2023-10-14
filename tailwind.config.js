@@ -6,6 +6,7 @@ module.exports = {
       colors: {
         "azulLogo": "#01acfc",
         "gradienteAzul": "linear-gradient(90deg, #01acfc, #00ffcc)",
+        'gradient-principal': 'linear-gradient(90deg, #d53369 0%, #daae51 100%)',
       }
     },
   },

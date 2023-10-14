@@ -1,0 +1,11 @@
+textarea:focus {
+    background: var(--gradientePrincipal);
+}
+
+#btn-enviar {
+    background: var(--gradientePrincipal);
+}
+
+#divRight {
+    background: var(--gradientePrincipal);
+}

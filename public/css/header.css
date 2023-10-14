@@ -78,10 +78,17 @@ header img {
       -webkit-animation-timing-function: ease-out;
               animation-timing-function: ease-out;
     }
-  }
-  
+}
 
 a.text-white:hover {
     background: var(--gradientePrincipal);
+}
+
+#iconsNavMobile:hover {
+        background: var(--gradientePrincipal);
+}
+
+i {
+        margin: 5px;
 }
 

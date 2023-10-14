@@ -1,7 +1,7 @@
-.container a:hover {
-    background: var(--gradientePrincipal);
+footer a svg {
+    fill: linear-gradient(90deg, #d53369 0%, #daae51 100%);
 }
 
 div.w-full:hover {
     background: var(--gradientePrincipal);
-  }
+}
