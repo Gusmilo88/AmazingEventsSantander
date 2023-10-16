@@ -13,3 +13,10 @@ input:checked {
 #button-addon1:hover {
     background: var(--gradienteMasOscuro);
 }
+
+.h2Events {
+    text-align: center;
+    font-size: 5vh;
+    font-weight: 700;
+    margin: 15px;
+}

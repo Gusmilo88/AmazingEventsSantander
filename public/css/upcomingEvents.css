@@ -1,0 +1,12 @@
+#container_h2 {
+    margin: 15px 0px 15px 0px;
+}
+
+#h2_upcomingEvents{
+    font-size: 6vh;
+    padding: 15px;
+    background-image: var(--gradientePrincipal);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}

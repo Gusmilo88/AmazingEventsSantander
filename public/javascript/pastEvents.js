@@ -1,6 +1,14 @@
-let tarjetsElement = document.getElementById("container_tarjets_home");
+const fechaActual = new Date();
 
-events.forEach((evento) => {
+let tarjetsElementPastEvents = document.getElementById("container_tarjets_pastEvents"); // Capturo el id del div contenedor
+
+
+const pastEvents = events.filter(evento => {
+    const fechaEvento = new Date(evento.date);
+    return fechaEvento < fechaActual;
+})
+
+pastEvents.forEach((evento) => {
     let tarjeta = document.createElement("div");
     
     tarjeta.innerHTML = `<div><div class="card mb-3 mx-auto" style="max-width: 540px;">
@@ -12,7 +20,8 @@ events.forEach((evento) => {
         <div class="card-body">
           <h3 class="card-title fw-bold">${evento.name}</h3>
           <p class="card-text">${evento.description}</p>
-          <p class="card-text text-success fw-bold">$${evento.price}</p>
+          <p class="card-text">Date: ${evento.date}</p>
+          <p class="card-text text-success fw-bold">Price: $${evento.price}</p>
         </div>
       </div>
       <div class="mb-12 pb-1 pt-1 text-center">
@@ -30,8 +39,6 @@ events.forEach((evento) => {
   </div></div>
 `;
 
-    tarjetsElement.appendChild(tarjeta)
+    tarjetsElementPastEvents.appendChild(tarjeta)
 
 });
-
-console.log(tarjetsElement);

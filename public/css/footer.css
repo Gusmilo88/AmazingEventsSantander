@@ -4,4 +4,5 @@ footer a svg {
 
 div.w-full:hover {
     background: var(--gradientePrincipal);
+    color: black;
 }
