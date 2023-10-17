@@ -17,11 +17,11 @@ pastEvents.forEach((evento) => {
         <img src="${evento.image}" class="img-fluid rounded-start" alt="${evento.place}">
       </div>
       <div class="col-md-8">
-        <div class="card-body text-center">
+        <div class="card-body">
           <h3 class="card-title fw-bold">${evento.name}</h3>
           <p class="card-text">${evento.description}</p>
-          <p class="card-text"><strong> Date: </strong>${evento.date}</p>
-          <p class="card-text text-success fw-bold">Price: $${evento.price}</p>
+          <p class="card-text"><strong>Date: </strong>${evento.date}</p>
+          <p class="card-text text-success"><strong>Price: </strong> $${evento.price}</p>
         </div>
       </div>
       <div class="mb-12 pb-1 pt-1 text-center">

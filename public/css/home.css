@@ -1,3 +1,10 @@
+i {
+    background-image: var(--gradientePrincipal);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
 input:focus {
     background: var(--gradientePrincipal);
 }
@@ -11,7 +18,7 @@ input:checked {
 }
 
 #button-addon1:hover {
-    background: var(--gradienteMasOscuro);
+    background: var(--gradienteMasClaro);
 }
 
 .h2Events {

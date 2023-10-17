@@ -1,4 +1,4 @@
 :root{
     --gradientePrincipal: linear-gradient(90deg, #d53369 0%, #daae51 100%);
-    --gradienteMasOscuro: linear-gradient(90deg, #FF5733 0%, #FFD133 100%);
+    --gradienteMasClaro: linear-gradient(90deg, #FF5733 0%, #FFD133 100%);
 }
