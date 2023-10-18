@@ -14,33 +14,37 @@ function dibujarTarjetas(array) {
   array.forEach((evento) => {
     let tarjeta = document.createElement("div");
 
-  tarjeta.innerHTML = `<div><div class="card mb-3 mx-auto" style="max-width: 540px;">
-  <div class="row g-0 border border-5 border-warning">
-    <div class="col-md-4">
-      <img src="${evento.image}" class="img-fluid rounded-start" alt="Imagen del evento ${evento.name}">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h3 class="card-title fw-bold">${evento.name}</h3>
-        <p class="card-text">${evento.description}</p>
-        <p class="card-text"><strong>Date: </strong>${evento.date}</p>
-        <p class="card-text text-success"><strong>Price: </strong> $${evento.price}</p>
+  tarjeta.innerHTML = `<div class="events_area">
+  <div class="container">
+      <div class="row justify-content-center">
+          <div class="col-lg-5">
+              <div class="main_title">
+              </div>
+          </div>
       </div>
-    </div>
-    <div class="mb-12 pb-1 pt-1 text-center">
-                        <a src="../../src/details.html${evento._id}"><button
-                          id="btn-enviar"
-                          class="mb-3 inline-block rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
-                          type="button"
-                          data-te-ripple-init
-                          data-te-ripple-color="light"
-                          >
-                          See more...
-                        </button></a>
+      <div class="row">
+              <div class="single_event position-relative">
+                  <div class="event_thumb">
+                      <img class="event-image" src="${evento.image}" alt="" />
+                  </div>
+                  <div class="event_details">
+                      <div class="d-flex mb-4">
+                          <div class="date"><span>${evento.date}</span></div>
+                          <div class="time-location">
+                              <p><span class="ti-time mr-2"></span> 12:00 AM - 12:30 AM</p>
+                              <p><span class="ti-location-pin mr-2"></span>${evento.place}</p>
+                          </div>
                       </div>
+                      <p>
+                      ${evento.description}
+                      </p>
+                      <a href="#" id="btnSeeMore" class="btn mt-3">See more</a>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
-</div></div>
-`;
+</div>`;
 
   contenedorElement.appendChild(tarjeta);
   })

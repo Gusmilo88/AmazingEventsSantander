@@ -2,7 +2,7 @@ footer a svg {
     fill: linear-gradient(90deg, #d53369 0%, #daae51 100%);
 }
 
-div.w-full:hover {
+#footer_copyright:hover {
     background: var(--gradientePrincipal);
     color: black;
 }
