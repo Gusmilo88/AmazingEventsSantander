@@ -5,6 +5,7 @@
   "type": "module",
   "dependencies": {
     "@glidejs/glide": "^3.6.0",
+    "axios": "^1.5.1",
     "tw-elements": "^1.0.0"
   }
 }

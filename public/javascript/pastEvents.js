@@ -5,7 +5,7 @@ let tarjetsElementPastEvents = document.getElementById("container_tarjets_pastEv
 
 const pastEvents = events.filter(evento => {
     const fechaEvento = new Date(evento.date);
-    return fechaEvento < fechaActual;
+    return fechaEvento < fechaActual; 
 })
 
 pastEvents.forEach((evento) => {

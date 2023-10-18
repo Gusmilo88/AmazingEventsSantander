@@ -1,17 +1,23 @@
-let tarjetsElement = document.getElementById("container_tarjets_home"); //Capturo el id del contenedor donde voy a crear las tarjetas
+//Elementos capturados:
+let contenedorElement = document.getElementById("container_tarjets_home"); //Contenedor donde voy a crear las tarjetas
+let btnElement = document.getElementById("button-addon1"); //Botón de la barra de busqueda
+let inputSearchElement = document.getElementById("inputSearch"); //Input de la barra de busqueda
 
-let inputSearchElement = document.getElementById("inputSearch")
+
+function dibujarTarjetas(array) {
+
+  if(array){
+
+    contenedorElement.innerHTML = "";
 
 
+  array.forEach((evento) => {
+    let tarjeta = document.createElement("div");
 
-function dibujarTarjeta(evento) {
-  
-  let tarjeta = document.createElement("div");
-    
   tarjeta.innerHTML = `<div><div class="card mb-3 mx-auto" style="max-width: 540px;">
   <div class="row g-0 border border-5 border-warning">
     <div class="col-md-4">
-      <img src="${evento.image}" class="img-fluid rounded-start" alt="${evento.place}">
+      <img src="${evento.image}" class="img-fluid rounded-start" alt="Imagen del evento ${evento.name}">
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -36,26 +42,38 @@ function dibujarTarjeta(evento) {
 </div></div>
 `;
 
-  tarjetsElement.appendChild(tarjeta)
-
+  contenedorElement.appendChild(tarjeta);
+  })
+} else {
+  console.log("Se necesita un array para dibjar los eventos");
+}
+  
 }
 
-events.forEach((evento) => {
-  dibujarTarjeta(evento)
+dibujarTarjetas(events);
+
+
+
+//Lógica de la barra de busqueda por texto:
+
+btnElement.addEventListener("click", () => {
+
+  let nombreEvento = inputSearchElement.value
+  
+  let arrayDeEventosFiltrados = events.filter((evento) => evento.name.toLowerCase().includes(nombreEvento.toLowerCase()));
+
+  if(arrayDeEventosFiltrados.length == 0) {
+    dibujarTarjetas(events)
+  } else {
+    dibujarTarjetas(arrayDeEventosFiltrados)
+  }
+
 });
 
-
-//Lógica de la barra de busqueda por texto: 
-
-inputSearchElement.addEventListener("change", () => {
-  console.log(inputSearchElement.value);
-})
 
 
 //Lógica de los checkbox:
 
 // document.getElementByTagName('input[type=checkbox]')
 
-
 //tagname
-
