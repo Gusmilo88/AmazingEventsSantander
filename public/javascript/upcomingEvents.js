@@ -1,17 +1,22 @@
-const fechaActual = new Date();
+//Elementos capturados:
+let contenedorElement = document.getElementById("container_tarjets_upcomingEvents"); //Contenedor donde voy a crear las tarjetas
 
-let tarjetsElementPastEvents = document.getElementById("container _tarjets_upcomingEvents"); // Capturo el id del div contenedor
+let btnElement = document.getElementById("button-addon1"); //Botón de la barra de busqueda
+let inputSearchElement = document.getElementById("inputSearch"); //Input de la barra de busqueda
 
+let eventos = [];
 
-const pastEvents = events.filter(evento => {
-    const fechaEvento = new Date(evento.date);
-    return fechaEvento >= fechaActual;
-})
+let fechaActual = new Date();
 
-pastEvents.forEach((evento) => {
-    let tarjeta = document.createElement("div");
-    
-    tarjeta.innerHTML = `<div class="events_area">
+//Function que dibuja las tarjetitas:
+function dibujarTarjetas(array) {
+  if (array) {
+    contenedorElement.innerHTML = "";
+
+    array.forEach((evento) => {
+      let tarjeta = document.createElement("div");
+
+      tarjeta.innerHTML = `<div class="events_area">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-5">
@@ -36,15 +41,58 @@ pastEvents.forEach((evento) => {
                         <p>
                         ${evento.description}
                         </p>
-                        <a href="#" id="btnSeeMore" class="btn mt-3">See more</a>
+                        <a href="../../src/details.html?eventName=${evento.name}&eventImage=${evento.image}&eventDescription=${evento.description}&eventPrice=${evento.price}" id="btnSeeMore" class="btn mt-3">Details</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-  </div>
-`;
+  </div>`;
 
-    tarjetsElementPastEvents.appendChild(tarjeta)
+      contenedorElement.appendChild(tarjeta);
+    });
+  } else {
+    console.log("Se necesita un array para dibujar los eventos");
+  }
+}
 
+//Llamamos a la API:
+async function ejecutarDibujado() {
+  await axios
+    .get("https://mindhub-xj03.onrender.com/api/amazing")
+    .then((response) => {
+      console.log(response);
+      eventos = response.data.events;
+    })
+    .catch((error) => {
+      console.log("Error " + error.message);
+    });
+
+  //Filtramos por eventos pasados:
+  const upcomingEvents = eventos.filter((evento) => {
+    const fechaEvento = new Date(evento.date);
+    return fechaEvento > fechaActual;
+  });
+
+  upcomingEvents.forEach((evento) => {
+    dibujarTarjetas(upcomingEvents);
+  });
+}
+
+ejecutarDibujado();
+
+//Lógica de la barra de busqueda por texto:
+
+btnElement.addEventListener("click", () => {
+  let nombreEvento = inputSearchElement.value;
+
+  let arrayDeEventosFiltrados = eventos.filter((evento) =>
+    evento.name.toLowerCase().includes(nombreEvento.toLowerCase())
+  );
+
+  if (arrayDeEventosFiltrados.length == 0) {
+    dibujarTarjetas(eventos);
+  } else {
+    dibujarTarjetas(arrayDeEventosFiltrados);
+  }
 });

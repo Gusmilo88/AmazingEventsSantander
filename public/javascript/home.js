@@ -41,7 +41,7 @@ function dibujarTarjetas(array) {
                         <p>
                         ${evento.description}
                         </p>
-                        <a href="../../src/details.html" id="btnSeeMore" class="btn mt-3">See more</a>
+                        <a href="../../src/details.html?eventName=${evento.name}&eventImage=${evento.image}&eventDescription=${evento.description}&eventPrice=${evento.price}" id="btnSeeMore" class="btn mt-3">Details</a>
                     </div>
                 </div>
             </div>
@@ -52,7 +52,7 @@ function dibujarTarjetas(array) {
       contenedorElement.appendChild(tarjeta);
     });
   } else {
-    console.log("Se necesita un array para dibjar los eventos");
+    console.log("Se necesita un array para dibujar los eventos");
   }
 }
 
@@ -74,9 +74,6 @@ async function ejecutarDibujado() {
 }
 
 ejecutarDibujado()
-
-
-
 
 
 
@@ -104,4 +101,3 @@ console.log(checkboxesChecked);
 
 // 
 
-//tagname

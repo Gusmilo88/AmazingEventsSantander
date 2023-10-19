@@ -7,7 +7,7 @@ let inputSearchElement = document.getElementById("inputSearch"); //Input de la b
 
 let eventos = [];
 
-const fechaActual = new Date();
+let fechaActual = new Date();
 
 
 //Function que dibuja las tarjetitas:
@@ -43,7 +43,7 @@ function dibujarTarjetas(array) {
                         <p>
                         ${evento.description}
                         </p>
-                        <a href="../../src/details.html" id="btnSeeMore" class="btn mt-3">See more</a>
+                        <a href="../../src/details.html?eventName=${evento.name}&eventImage=${evento.image}&eventDescription=${evento.description}&eventPrice=${evento.price}" id="btnSeeMore" class="btn mt-3">Details</a>
                     </div>
                 </div>
             </div>
@@ -57,17 +57,6 @@ function dibujarTarjetas(array) {
     console.log("Se necesita un array para dibjar los eventos");
   }
 }
-
-//Filtramos por eventos pasados:
-const pastEvents = eventos.filter(evento => {
-    const fechaEvento = new Date(evento.date);
-    return fechaEvento < fechaActual; 
-})
-
-pastEvents.forEach((evento) => {    
-
-    dibujarTarjetas(eventos)
-});
 
 
 //Llamamos a la API:
@@ -84,8 +73,19 @@ async function ejecutarDibujado() {
   })
 
 
-  dibujarTarjetas(eventos)
+  //Filtramos por eventos pasados:
+const pastEvents = eventos.filter(evento => {
+  const fechaEvento = new Date(evento.date);
+  return fechaEvento < fechaActual; 
+})
+
+  pastEvents.forEach((evento) => {    
+
+    dibujarTarjetas(pastEvents)
+});
 }
+
+
 
 ejecutarDibujado()
 
