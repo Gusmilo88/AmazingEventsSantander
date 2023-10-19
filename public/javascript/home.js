@@ -1,60 +1,81 @@
 //Elementos capturados:
 let contenedorElement = document.getElementById("container_tarjets_home"); //Contenedor donde voy a crear las tarjetas
+
 let btnElement = document.getElementById("button-addon1"); //Botón de la barra de busqueda
 let inputSearchElement = document.getElementById("inputSearch"); //Input de la barra de busqueda
 
+let checkboxesChecked = document.getElementsByTagName('input[type="checkbox"]:checked');
+
+let eventos = [];
+
 
 function dibujarTarjetas(array) {
-
-  if(array){
-
+  if (array) {
     contenedorElement.innerHTML = "";
 
+    array.forEach((evento) => {
+      let tarjeta = document.createElement("div");
 
-  array.forEach((evento) => {
-    let tarjeta = document.createElement("div");
+      tarjeta.innerHTML = `<div class="events_area">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-5">
+                <div class="main_title">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+                <div class="single_event position-relative">
+                    <div class="event_thumb">
+                        <img class="event-image" src="${evento.image}" alt="" />
+                    </div>
+                    <div class="event_details">
+                        <div class="d-flex mb-4">
+                            <div class="date"><span>${evento.date}</span></div>
+                            <div class="time-location">
+                                <p><span class="ti-time mr-2"></span> 12:00 AM - 12:30 AM</p>
+                                <p><span class="ti-location-pin mr-2"></span>${evento.place}</p>
+                            </div>
+                        </div>
+                        <h2 id="eventCardName" class="mb-2">${evento.name}</h2>
+                        <p>
+                        ${evento.description}
+                        </p>
+                        <a href="../../src/details.html" id="btnSeeMore" class="btn mt-3">See more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>`;
 
-  tarjeta.innerHTML = `<div class="events_area">
-  <div class="container">
-      <div class="row justify-content-center">
-          <div class="col-lg-5">
-              <div class="main_title">
-              </div>
-          </div>
-      </div>
-      <div class="row">
-              <div class="single_event position-relative">
-                  <div class="event_thumb">
-                      <img class="event-image" src="${evento.image}" alt="" />
-                  </div>
-                  <div class="event_details">
-                      <div class="d-flex mb-4">
-                          <div class="date"><span>${evento.date}</span></div>
-                          <div class="time-location">
-                              <p><span class="ti-time mr-2"></span> 12:00 AM - 12:30 AM</p>
-                              <p><span class="ti-location-pin mr-2"></span>${evento.place}</p>
-                          </div>
-                      </div>
-                      <p>
-                      ${evento.description}
-                      </p>
-                      <a href="#" id="btnSeeMore" class="btn mt-3">See more</a>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-</div>`;
+      contenedorElement.appendChild(tarjeta);
+    });
+  } else {
+    console.log("Se necesita un array para dibjar los eventos");
+  }
+}
 
-  contenedorElement.appendChild(tarjeta);
+async function ejecutarDibujado() {
+
+
+  await axios.get("https://mindhub-xj03.onrender.com/api/amazing")
+  .then((response) => {
+    console.log(response);
+    eventos = response.data.events
   })
-} else {
-  console.log("Se necesita un array para dibjar los eventos");
-}
-  
+  .catch((error) => {
+    console.log("Error " + error.message);
+  })
+
+
+  dibujarTarjetas(eventos)
 }
 
-dibujarTarjetas(events);
+ejecutarDibujado()
+
+
+
 
 
 
@@ -64,10 +85,10 @@ btnElement.addEventListener("click", () => {
 
   let nombreEvento = inputSearchElement.value
   
-  let arrayDeEventosFiltrados = events.filter((evento) => evento.name.toLowerCase().includes(nombreEvento.toLowerCase()));
+  let arrayDeEventosFiltrados = eventos.filter((evento) => evento.name.toLowerCase().includes(nombreEvento.toLowerCase()));
 
   if(arrayDeEventosFiltrados.length == 0) {
-    dibujarTarjetas(events)
+    dibujarTarjetas(eventos)
   } else {
     dibujarTarjetas(arrayDeEventosFiltrados)
   }
@@ -78,6 +99,8 @@ btnElement.addEventListener("click", () => {
 
 //Lógica de los checkbox:
 
-// document.getElementByTagName('input[type=checkbox]')
+console.log(checkboxesChecked);
+
+// 
 
 //tagname

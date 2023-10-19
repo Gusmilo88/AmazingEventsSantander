@@ -73,13 +73,14 @@ body{margin-top:20px;}
 
 /* Le doy otros estilos mios */
 
-.row {
-    width: 60%;
-}
 
 .event-image {
-    height: 100%; /* Establece la altura deseada para las imágenes */
+    height: 100%;
     width: 100%;
+}
+
+#eventCardName {
+    color: #fdc632;
 }
 
 #btnSeeMore {
