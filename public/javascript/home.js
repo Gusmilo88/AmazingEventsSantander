@@ -8,7 +8,7 @@ let checkboxesChecked = document.getElementsByTagName('input[type="checkbox"]:ch
 
 let eventos = [];
 
-
+//Function que dibuja las tarjetitas:
 function dibujarTarjetas(array) {
   if (array) {
     contenedorElement.innerHTML = "";
@@ -56,6 +56,7 @@ function dibujarTarjetas(array) {
   }
 }
 
+//Llamamos a la API:
 async function ejecutarDibujado() {
 
 
