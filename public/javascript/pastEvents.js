@@ -4,6 +4,8 @@ let contenedorElement = document.getElementById("container_tarjets_pastEvents");
 let btnElement = document.getElementById("button-addon1"); //Botón de la barra de busqueda
 let inputSearchElement = document.getElementById("inputSearch"); //Input de la barra de busqueda
 
+const categoryCheckboxes = document.querySelectorAll('.category-checkbox'); // Captura todos los checkboxes
+
 
 let eventos = [];
 
@@ -88,6 +90,30 @@ const pastEvents = eventos.filter(evento => {
 
 
 ejecutarDibujado()
+
+
+// ! Función para filtrar los eventos en función de las categorías seleccionadas.
+function filtrarEventos() {
+  // Acá obtengo categorías seleccionadas.
+  const categoriasSeleccionadas = Array.from(categoryCheckboxes)
+    .filter(checkbox => checkbox.checked)
+    .map(checkbox => checkbox.value);
+
+  if (categoriasSeleccionadas.length === 0) {
+
+    dibujarTarjetas(eventos);
+
+  } else {
+
+    const eventosFiltrados = eventos.filter(evento => categoriasSeleccionadas.includes(evento.category));
+    dibujarTarjetas(eventosFiltrados);
+  }
+}
+
+// ! Agrega event listener a cada checkbox para detectar cambios.
+categoryCheckboxes.forEach(checkbox => {
+  checkbox.addEventListener('change', filtrarEventos);
+});
 
 
 //Lógica de la barra de busqueda por texto:
